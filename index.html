@@ -1,0 +1,61 @@
+</title>
+<p>
+<center> <h1> Hola! Que tal? </h1> </center>
+</head>
+<body bgcolor="#5E24A4">
+Hola mon, aquesta es la meva primera pagina web i us explicare que es l'internet. Una página web es un documento accesible desde cualquier navegador con acceso a internet, y que puede incluir audio, vídeo, texto y sus diferentes combinaciones. Las<b> primeras </b>webs surgieron en el año 1992.
+<p>
+Conjunto de información que se encuentra en una dirección determinada de internet
+</p>
+<center> <FONT FACE="times new roman" SIZE=5 COLOR="white"> quieres comprar999999999 robux? </FONT> </center>
+</p>
+<center> <img src="scrnli_26_3_2022_21-29-57.png" width="300" height="100" /> </center>
+</p>
+<center> <FONT FACE="times new roman" SIZE=5 COLOR="white"> aprovecha ya! solo hoy por 1.000.000$!!1! </FONT> </center>
+</p>
+<div id="smart-button-container">
+      <div style="text-align: center;">
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'gold',
+          layout: 'vertical',
+          label: 'paypal',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"prueba lol","amount":{"currency_code":"USD","value":10}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+            // Or go to another URL:  actions.redirect('thank_you.html');
+            
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
